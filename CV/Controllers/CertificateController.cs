@@ -22,12 +22,34 @@ namespace CV.Controllers
         public ActionResult UpdateCertificate(int id)
         {
             var certificate = repository.GetByID(x => x.ID == id);
+            ViewBag.d = id;
             return View(certificate);
         }
         [HttpPost]
         public ActionResult UpdateCertificate(Certificates t)
         {
+            var certificate = repository.GetByID(x => x.ID == t.ID);
+            certificate.Description = t.Description;
+            certificate.Date = t.Date;
+            repository.TUpdate(certificate);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult AddCertificate()
+        {
             return View();
+        }
+        [HttpPost]
+        public ActionResult AddCertificate(Certificates t)
+        {
+            repository.TAdd(t);
+            return RedirectToAction("Index");
+        }
+        public ActionResult DeleteCertificate(int id)
+        {
+            var value = repository.GetByID(x => x.ID == id);
+            repository.TDelete(value);
+            return RedirectToAction("Index");   
         }
     }
 }

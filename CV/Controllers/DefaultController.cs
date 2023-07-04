@@ -7,13 +7,20 @@ using System.Web.Mvc;
 
 namespace CV.Controllers
 {
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
         // GET: Default
         DBCvEntities db = new DBCvEntities();
         public ActionResult Index()
         {
-            return View();
+            var values = db.Abouts.ToList();
+            return View(values);
+        }
+        public PartialViewResult SocialMedia()
+        {
+            var values = db.SocialMedia.Where(x => x.Statu == true).ToList();
+            return PartialView(values);
         }
         public PartialViewResult About()
         {

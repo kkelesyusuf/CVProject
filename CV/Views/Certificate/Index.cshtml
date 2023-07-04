@@ -16,7 +16,8 @@
                     <div class="card">
                         </div><!-- /.card-header -->
                     <div class="card-body">
-
+                        <a href="/Certificate/AddCertificate/" class="btn btn-outline-info">Yeni Sertifika Ekle</a>
+                        <br /><br />
                         @foreach (var item in Model)
                         {
                             <div class="tab-pane" id="timeline">
@@ -24,12 +25,24 @@
                                 <div class="timeline timeline-inverse">
                                     <!-- timeline time label -->
                                     <div class="time-label">
-                                        <a href="/Certificate/UpdateCertificate/@item.ID" class="btn btn-success">
-                                        <span class="bg-success">
-                                            @item.Date
-                                        </span></a> 
+                                        @if (item.ID % 2 == 0)
+                                        {
+                                            <a href="/Certificate/UpdateCertificate/@item.ID" class="btn btn-success">
+                                                <span class="bg-success">
+                                                    @item.Date
+                                                </span>
+                                            </a>
+                                        }
+                                        @if (item.ID % 2 != 0)
+                                        {
+                                            <a href="/Certificate/UpdateCertificate/@item.ID" class="btn btn-primary">
+                                                <span class="bg-primary">
+                                                    @item.Date
+                                                </span>
+                                            </a>
+                                        }
                                     </div>
-                                    <!-- /.timeline-label -->   
+                                    <!-- /.timeline-label -->
                                     <!-- timeline item -->
                                     <div>
                                         <div class="timeline-item">

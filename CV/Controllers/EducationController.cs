@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CV.Controllers
 {
+    //[Authorize] controller bazında authorize etme
     public class EducationController : Controller
     {
         // GET: Education

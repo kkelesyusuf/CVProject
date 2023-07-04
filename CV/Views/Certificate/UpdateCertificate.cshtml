@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>UpdateSkill</h2>
+<h2>Sertifika güncellee sayfası</h2>
 
 <div class="container">
     <form method="post">
@@ -18,5 +18,6 @@
         @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
         <br />
         <button class="btn btn-info">Güncelle</button>
+        <a href="/Certificate/DeleteCertificate/@ViewBag.d" class="btn btn-danger">Sil</a>
     </form>
 </div>
